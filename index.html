@@ -1,137 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-T">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOTE-5D: El Futuro de la Democracia Segura en Chile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script> 
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .hero-bg {
-            background-color: #1a237e; /* Azul oscuro institucional */
-        }
-        .section-title {
-            @apply text-3xl font-bold text-center mb-8 text-indigo-700;
-        }
-        .card {
-            @apply bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300;
-        }
-        .btn {
-            @apply px-6 py-3 rounded-md font-semibold transition-colors duration-300;
-        }
-        .btn-primary {
-            @apply bg-indigo-600 text-white hover:bg-indigo-700;
-        }
-        .btn-secondary {
-            @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
-        }
-        .modal {
-            display: none; /* Hidden by default */
-        }
-        .modal.active {
-            display: flex; /* Show when active */
-        }
-    </style>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body class="bg-gray-100 text-gray-800">
 
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-indigo-700">VOTE-5D</a>
-            <div class="hidden md:flex space-x-4">
-                <a href="#hero" class="text-gray-600 hover:text-indigo-600">Inicio</a>
-                <a href="#seguridad" class="text-gray-600 hover:text-indigo-600">Seguridad</a>
-                <a href="#ia" class="text-gray-600 hover:text-indigo-600">IA</a>
-                <a href="#impacto" class="text-gray-600 hover:text-indigo-600">Impacto</a>
-                <a href="#presupuesto" class="text-gray-600 hover:text-indigo-600">Presupuesto</a>
-                <a href="#arquitectura" class="text-gray-600 hover:text-indigo-600">Arquitectura</a>
-                <a href="#faq" class="text-gray-600 hover:text-indigo-600">FAQ</a>
-                <a href="#contacto" class="text-gray-600 hover:text-indigo-600">Contacto</a>
+    <header>
+        <nav class="container py-3 flex justify-between items-center">
+            <a href="#hero" class="text-2xl font-bold">VOTE-5D</a>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="#hero">Inicio</a>
+                <a href="#seguridad">Seguridad</a>
+                <a href="#ia">IA</a>
+                <a href="#impacto">Impacto</a>
+                <a href="#presupuesto">Presupuesto</a>
+                <a href="#arquitectura">Arquitectura</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contacto">Contacto</a>
             </div>
             <div class="flex items-center">
-                 <button id="lang-switcher" class="text-sm text-gray-500 hover:text-indigo-600 mr-4">EN</button>
-                 <button id="mobile-menu-button" class="md:hidden focus:outline-none">
+                 <button id="lang-switcher" class="text-sm text-gray-500 hover:text-indigo-600 mr-4 focus:outline-none">EN</button>
+                 <button id="mobile-menu-button" class="md:hidden focus:outline-none p-2">
                     <i class="fas fa-bars text-indigo-700 text-2xl"></i>
                 </button>
             </div>
         </nav>
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            <a href="#hero" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">Inicio</a>
-            <a href="#seguridad" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">Seguridad</a>
-            <a href="#ia" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">IA</a>
-            <a href="#impacto" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">Impacto</a>
-            <a href="#presupuesto" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">Presupuesto</a>
-            <a href="#arquitectura" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">Arquitectura</a>
-            <a href="#faq" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">FAQ</a>
-            <a href="#contacto" class="block px-6 py-3 text-gray-600 hover:bg-indigo-50">Contacto</a>
+            {/* Los enlaces se generan dinámicamente por JS si es necesario o se copian del nav principal */}
         </div>
     </header>
 
-    <section id="hero" class="hero-bg text-white py-20 min-h-screen flex items-center">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4">VOTE-5D: El Futuro de la Democracia Segura en Chile</h1>
-            <p class="text-lg md:text-2xl mb-8">Cabinas electrónicas portátiles con validación biométrica, trazabilidad blockchain y machine learning aplicado a seguridad electoral.</p>
+    <section id="hero" class="hero-bg py-20 min-h-screen flex items-center">
+        <div class="container text-center">
+            <h1>VOTE-5D: El Futuro de la Democracia Segura en Chile</h1>
+            <p class="text-lg md:text-2xl mb-10">Cabinas electrónicas portátiles con validación biométrica, trazabilidad blockchain y machine learning aplicado a seguridad electoral.</p>
             <button id="explore-prototype-btn" class="btn btn-primary text-lg px-8 py-4">
                 <i class="fas fa-cube mr-2"></i>Explorar Prototipo 3D
             </button>
-            <div id="3d-model-container" class="mt-12 w-full max-w-3xl mx-auto h-96 bg-gray-700/50 rounded-lg flex items-center justify-center text-gray-400">
-                <p>[Modelo 3D Interactivo de Cabina VOTE-5D]</p>
-                </div>
+            <div id="3d-model-container-hero" class="mt-12">
+                <p>[Modelo 3D Interactivo de Cabina VOTE-5D - Vista previa estática o animación simple aquí]</p>
+            </div>
         </div>
     </section>
 
-    <div id="modal-3d" class="modal fixed inset-0 bg-black bg-opacity-75 items-center justify-center p-4 z-50">
-        <div class="bg-white p-6 rounded-lg shadow-xl max-w-4xl w-full relative">
-            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-600 hover:text-gray-900 text-2xl">&times;</button>
-            <h3 class="text-2xl font-bold mb-4 text-indigo-700">Prototipo Cabina VOTE-5D</h3>
-            <div id="interactive-3d-viewer" class="w-full h-[60vh] bg-gray-200 rounded flex items-center justify-center">
-                <p class="text-gray-500">Cargando modelo 3D interactivo...</p>
-                <ul class="absolute bottom-4 left-4 bg-white/80 p-2 rounded shadow text-sm">
-                    <li><i class="fas fa-desktop mr-1"></i> Pantalla táctil</li>
-                    <li><i class="fas fa-fingerprint mr-1"></i> Sensor de huella</li>
-                    <li><i class="fas fa-camera mr-1"></i> Cámara facial</li>
-                    <li><i class="fas fa-signature mr-1"></i> Panel firma digital</li>
-                    <li><i class="fas fa-microphone mr-1"></i> Escáner de voz</li>
-                    <li><i class="fas fa-sim-card mr-1"></i> Autenticador móvil (NFC/QR)</li>
-                    <li><i class="fas fa-battery-full mr-1"></i> Respaldo de energía</li>
-                    <li><i class="fas fa-shield-alt mr-1"></i> Blindaje y GPS</li>
-                </ul>
+    <div id="modal-3d" class="modal">
+        <div class="p-6">
+            <button id="close-modal-btn" aria-label="Cerrar modal">&times;</button>
+            <h3>Prototipo Cabina VOTE-5D</h3>
+            <div id="interactive-3d-viewer">
+                <p id="loading-text">Cargando modelo 3D interactivo...</p>
             </div>
+            <ul class="interactive-elements-list">
+                <li><i class="fas fa-desktop"></i> Pantalla táctil</li>
+                <li><i class="fas fa-fingerprint"></i> Sensor de huella</li>
+                <li><i class="fas fa-camera"></i> Cámara facial</li>
+                <li><i class="fas fa-signature"></i> Panel firma digital</li>
+                <li><i class="fas fa-microphone"></i> Escáner de voz</li>
+                <li><i class="fas fa-sim-card"></i> Autenticador móvil (NFC/QR)</li>
+                <li><i class="fas fa-battery-full"></i> Respaldo de energía</li>
+                <li><i class="fas fa-shield-alt"></i> Blindaje y GPS</li>
+            </ul>
         </div>
     </div>
 
-    <section id="seguridad" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
+    <section id="seguridad">
+        <div class="container">
             <h2 class="section-title">Validación y Seguridad de Voto</h2>
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Autenticación de 5 Factores</h3>
-                    <p class="mb-4">Nuestro sistema utiliza cinco capas de autenticación para garantizar la identidad del votante y la integridad del proceso:</p>
-                    <ul class="list-disc list-inside space-y-2 mb-4">
-                        <li><i class="fas fa-fingerprint text-indigo-500 mr-2"></i>Huella digital</li>
-                        <li><i class="fas fa-user-check text-indigo-500 mr-2"></i>Reconocimiento facial</li>
-                        <li><i class="fas fa-microphone-alt text-indigo-500 mr-2"></i>Verificación por voz</li>
-                        <li><i class="fas fa-signature text-indigo-500 mr-2"></i>Firma digital</li>
-                        <li><i class="fas fa-mobile-alt text-indigo-500 mr-2"></i>Autenticador móvil (NFC/QR)</li>
+                    <h3>Autenticación de 5 Factores</h3>
+                    <p>Nuestro sistema utiliza cinco capas de autenticación para garantizar la identidad del votante y la integridad del proceso:</p>
+                    <ul class="list-disc">
+                        <li><i class="fas fa-fingerprint"></i>Huella digital</li>
+                        <li><i class="fas fa-user-check"></i>Reconocimiento facial</li>
+                        <li><i class="fas fa-microphone-alt"></i>Verificación por voz</li>
+                        <li><i class="fas fa-signature"></i>Firma digital</li>
+                        <li><i class="fas fa-mobile-alt"></i>Autenticador móvil (NFC/QR)</li>
                     </ul>
-                    <img src="https://placehold.co/600x400/e2e8f0/6366f1?text=Gráfico+5+Factores" alt="Diagrama de 5 factores de autenticación" class="rounded-lg shadow-md w-full">
+                    <div class="mt-6 bg-white p-4 rounded-lg shadow-md">
+                        <canvas id="fiveFactorAuthChart" class="max-w-md mx-auto"></canvas>
+                    </div>
                 </div>
-                <div>
-                    <div class="card mb-6">
-                        <h4 class="text-xl font-semibold mb-2 text-indigo-600">Privacidad del Votante</h4>
+                <div class="space-y-6">
+                    <div class="card">
+                        <h4>Privacidad del Votante</h4>
                         <p>Se utilizan técnicas de encriptación avanzada y disociación de datos para asegurar que el voto sea anónimo y no pueda ser rastreado hasta el individuo. Los datos biométricos se procesan localmente y se utilizan solo para la autenticación, sin almacenarse de forma centralizada vinculados al voto.</p>
                     </div>
-                    <div class="card mb-6">
-                        <h4 class="text-xl font-semibold mb-2 text-indigo-600">Detección de Anomalías con Machine Learning</h4>
+                    <div class="card">
+                        <h4>Detección de Anomalías con Machine Learning</h4>
                         <p>Algoritmos de IA monitorean patrones de votación en tiempo real para detectar y alertar sobre comportamientos inusuales o posibles intentos de fraude, sin comprometer la privacidad del voto.</p>
                     </div>
                     <div class="card">
-                        <h4 class="text-xl font-semibold mb-2 text-indigo-600">Trazabilidad con Blockchain</h4>
+                        <h4>Trazabilidad con Blockchain</h4>
                         <p>Cada voto emitido (de forma anónima) se registra en una cadena de bloques distribuida, garantizando su inmutabilidad y permitiendo auditorías transparentes y verificables por cualquier entidad autorizada.</p>
                     </div>
                 </div>
@@ -139,112 +114,116 @@
         </div>
     </section>
 
-    <section id="ia" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
+    <section id="ia" class="bg-gray-50">
+        <div class="container">
             <h2 class="section-title">Aplicaciones de Inteligencia Artificial</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600"><i class="fas fa-user-shield mr-2"></i>Validación Facial Adaptativa</h3>
+                    <h3><i class="fas fa-user-shield mr-2"></i>Validación Facial Adaptativa</h3>
                     <p>Modelos de IA que se adaptan a cambios en la apariencia (lentes, mascarillas parciales) y condiciones de iluminación para una verificación robusta.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600"><i class="fas fa-assistive-listening-systems mr-2"></i>Reconocimiento de Voz Seguro</h3>
+                    <h3><i class="fas fa-assistive-listening-systems mr-2"></i>Reconocimiento de Voz Seguro</h3>
                     <p>Sistemas que analizan múltiples características de la voz para una autenticación precisa, incluso en ambientes con ruido moderado.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600"><i class="fas fa-file-signature mr-2"></i>Firma Digital Dinámica</h3>
+                    <h3><i class="fas fa-file-signature mr-2"></i>Firma Digital Dinámica</h3>
                     <p>Análisis de la biometría del trazo de la firma (presión, velocidad, inclinación) para una capa adicional de seguridad.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600"><i class="fas fa-comments mr-2"></i>Análisis de Sentimiento Ciudadano</h3>
+                    <h3><i class="fas fa-comments mr-2"></i>Análisis de Sentimiento Ciudadano</h3>
                     <p>Procesamiento de lenguaje natural (NLP) para analizar feedback y opiniones sobre el sistema (post-implementación, datos agregados y anónimos).</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600"><i class="fas fa-map-marked-alt mr-2"></i>Clustering Predictivo de Ubicaciones</h3>
+                    <h3><i class="fas fa-map-marked-alt mr-2"></i>Clustering Predictivo de Ubicaciones</h3>
                     <p>IA para identificar las ubicaciones óptimas para las cabinas, maximizando la accesibilidad y minimizando la abstención en base a datos demográficos y geográficos.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-cogs mr-2"></i>Optimización de Procesos</h3>
+                    <p>Uso de IA para optimizar la logística electoral, la distribución de materiales y la asignación de personal.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="impacto" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
+    <section id="impacto">
+        <div class="container">
             <h2 class="section-title">Impacto Esperado</h2>
             <p class="text-center text-lg mb-10 max-w-3xl mx-auto">VOTE-5D busca transformar la participación ciudadana y la eficiencia de los procesos electorales en Chile.</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
                 <div class="card items-center">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">+15%</div>
-                    <p class="text-gray-700">Reducción de abstención</p>
+                    <div class="text-4xl font-bold mb-2">+15%</div>
+                    <p>Reducción de abstención</p>
                 </div>
                 <div class="card items-center">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">+20%</div>
-                    <p class="text-gray-700">Inclusión en zonas rurales</p>
+                    <div class="text-4xl font-bold mb-2">+20%</div>
+                    <p>Inclusión en zonas rurales</p>
                 </div>
                 <div class="card items-center">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">90%</div>
-                    <p class="text-gray-700">Satisfacción esperada</p>
+                    <div class="text-4xl font-bold mb-2">90%</div>
+                    <p>Satisfacción esperada</p>
                 </div>
                 <div class="card items-center">
-                    <div class="text-4xl font-bold text-indigo-600 mb-2">-50%</div>
-                    <p class="text-gray-700">Costos logísticos (zonas remotas)</p>
+                    <div class="text-4xl font-bold mb-2">-50%</div>
+                    <p>Costos logísticos (zonas remotas)</p>
                 </div>
             </div>
             <div class="mt-12">
-                <h3 class="text-2xl font-semibold mb-4 text-center text-indigo-600">Casos de Uso Específicos</h3>
+                <h3 class="text-2xl font-semibold mb-4 text-center">Casos de Uso Específicos</h3>
                 <p class="text-center text-lg mb-6">Facilitando el voto para:</p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Sectores Mineros</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Trabajadores Agrícolas</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Personal de Salud</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Estudiantes Universitarios</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Comunidades Aisladas</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Sectores Mineros</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Trabajadores Agrícolas</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Personal de Salud</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Estudiantes Universitarios</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Comunidades Aisladas</span>
                 </div>
             </div>
              <div class="mt-10 p-6 bg-gray-50 rounded-lg shadow">
-                <h4 class="text-xl font-semibold text-indigo-600 mb-3 text-center">Visualización de Impacto</h4>
-                <img src="https://placehold.co/800x400/e2e8f0/6366f1?text=Gráfico+de+Barras+Animado+Impacto" alt="Gráfico de impacto" class="rounded-lg shadow-md w-full">
-                 <p class="text-sm text-gray-500 mt-2 text-center">Este gráfico se animará para mostrar las métricas de impacto proyectadas.</p>
+                <h4 class="text-xl font-semibold mb-3 text-center">Visualización de Impacto</h4>
+                <canvas id="impactChart" class="w-full"></canvas>
+                <p class="text-sm text-gray-500 mt-2 text-center">Este gráfico muestra las métricas de impacto proyectadas.</p>
             </div>
         </div>
     </section>
 
-    <section id="presupuesto" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
+    <section id="presupuesto" class="bg-gray-50">
+        <div class="container">
             <h2 class="section-title">Presupuesto Estimado por Fase</h2>
             <div class="overflow-x-auto bg-white rounded-lg shadow-lg p-6">
-                <table class="w-full min-w-max text-left">
+                <table>
                     <thead>
-                        <tr class="border-b border-gray-300">
-                            <th class="py-3 px-4 font-semibold text-indigo-700">Fase</th>
-                            <th class="py-3 px-4 font-semibold text-indigo-700">Descripción</th>
-                            <th class="py-3 px-4 font-semibold text-indigo-700 text-right">Costo Estimado (CLP)</th>
-                            <th class="py-3 px-4 font-semibold text-indigo-700 text-right">Costo Estimado (USD)</th>
+                        <tr>
+                            <th>Fase</th>
+                            <th>Descripción</th>
+                            <th class="text-right">Costo Estimado (CLP)</th>
+                            <th class="text-right">Costo Estimado (USD)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="border-b border-gray-200 hover:bg-gray-50">
-                            <td class="py-3 px-4">Fase 1: Diseño y Prototipado</td>
-                            <td class="py-3 px-4">Investigación, diseño UX/UI, desarrollo de prototipo funcional cabina y software inicial.</td>
-                            <td class="py-3 px-4 text-right">$XX.XXX.XXX</td>
-                            <td class="py-3 px-4 text-right">$XX.XXX</td>
+                        <tr>
+                            <td>Fase 1: Diseño y Prototipado</td>
+                            <td>Investigación, diseño UX/UI, desarrollo de prototipo funcional cabina y software inicial.</td>
+                            <td class="text-right">$XX.XXX.XXX</td>
+                            <td class="text-right">$XX.XXX</td>
                         </tr>
-                        <tr class="border-b border-gray-200 hover:bg-gray-50">
-                            <td class="py-3 px-4">Fase 2: Piloto y Pruebas</td>
-                            <td class="py-3 px-4">Implementación de piloto en 2-3 comunas, pruebas de campo, recolección de feedback, auditorías iniciales.</td>
-                            <td class="py-3 px-4 text-right">$XX.XXX.XXX</td>
-                            <td class="py-3 px-4 text-right">$XX.XXX</td>
+                        <tr>
+                            <td>Fase 2: Piloto y Pruebas</td>
+                            <td>Implementación de piloto en 2-3 comunas, pruebas de campo, recolección de feedback, auditorías iniciales.</td>
+                            <td class="text-right">$XX.XXX.XXX</td>
+                            <td class="text-right">$XX.XXX</td>
                         </tr>
-                        <tr class="border-b border-gray-200 hover:bg-gray-50">
-                            <td class="py-3 px-4">Fase 3: Desarrollo Escalado</td>
-                            <td class="py-3 px-4">Desarrollo de la plataforma completa, integración con sistemas gubernamentales, ciberseguridad avanzada.</td>
-                            <td class="py-3 px-4 text-right">$XXX.XXX.XXX</td>
-                            <td class="py-3 px-4 text-right">$XXX.XXX</td>
+                        <tr>
+                            <td>Fase 3: Desarrollo Escalado</td>
+                            <td>Desarrollo de la plataforma completa, integración con sistemas gubernamentales, ciberseguridad avanzada.</td>
+                            <td class="text-right">$XXX.XXX.XXX</td>
+                            <td class="text-right">$XXX.XXX</td>
                         </tr>
-                        <tr class="hover:bg-gray-50">
-                            <td class="py-3 px-4">Fase 4: Implementación Nacional</td>
-                            <td class="py-3 px-4">Despliegue gradual a nivel nacional, capacitación, soporte y mantenimiento continuo.</td>
-                            <td class="py-3 px-4 text-right">$XXX.XXX.XXX</td>
-                            <td class="py-3 px-4 text-right">$XXX.XXX</td>
+                        <tr>
+                            <td>Fase 4: Implementación Nacional</td>
+                            <td>Despliegue gradual a nivel nacional, capacitación, soporte y mantenimiento continuo.</td>
+                            <td class="text-right">$XXX.XXX.XXX</td>
+                            <td class="text-right">$XXX.XXX</td>
                         </tr>
                     </tbody>
                 </table>
@@ -257,8 +236,8 @@
         </div>
     </section>
 
-    <section id="arquitectura" class="py-16 bg-white">
-        <div class="container mx-auto px-6">
+    <section id="arquitectura">
+        <div class="container">
             <h2 class="section-title">Arquitectura Técnica del Sistema</h2>
              <div class="mb-10 p-6 bg-gray-50 rounded-lg shadow">
                 <img src="https://placehold.co/1000x500/e2e8f0/6366f1?text=Diagrama+Técnico+Interactivo" alt="Diagrama de arquitectura técnica" class="rounded-lg shadow-md w-full mx-auto">
@@ -266,279 +245,154 @@
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600">Edge Computing (Cabina)</h3>
+                    <h3>Edge Computing (Cabina)</h3>
                     <p>Procesamiento local de datos biométricos, encriptación y comunicación segura. Minimiza latencia y dependencia de conectividad constante.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600">Backend Gubernamental</h3>
+                    <h3>Backend Gubernamental</h3>
                     <p>Servidores seguros para la gestión de elecciones, padrones electorales (integración SERVEL), y consolidación de resultados anónimos.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600">Integración SERVEL</h3>
+                    <h3>Integración SERVEL</h3>
                     <p>APIs seguras para la validación de identidad contra el padrón electoral oficial y el envío de resultados agregados.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600">Plataforma Machine Learning</h3>
+                    <h3>Plataforma Machine Learning</h3>
                     <p>Modelos para detección de anomalías, optimización de ubicaciones y análisis adaptativos, operando sobre datos agregados y anonimizados.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600">Blockchain (Red Distribuida)</h3>
+                    <h3>Blockchain (Red Distribuida)</h3>
                     <p>Red permisionada para el registro inmutable y auditable de los votos encriptados y anonimizados.</p>
                 </div>
                 <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600">HSM (Hardware Security Modules)</h3>
+                    <h3>HSM (Hardware Security Modules)</h3>
                     <p>Módulos de seguridad de hardware para la gestión y protección de claves criptográficas críticas.</p>
                 </div>
                  <div class="card">
-                    <h3 class="text-xl font-semibold mb-2 text-indigo-600">Ciberseguridad Activa</h3>
+                    <h3>Ciberseguridad Activa</h3>
                     <p>Monitoreo constante, pruebas de penetración, firewalls de próxima generación y protocolos de respuesta a incidentes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="faq" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
+    <section id="faq" class="bg-gray-50">
+        <div class="container">
             <h2 class="section-title">Preguntas Frecuentes y Ética del Sistema</h2>
-            <div class="max-w-3xl mx-auto">
-                <div class="mb-4">
-                    <button class="faq-question w-full text-left p-4 bg-white rounded-lg shadow hover:shadow-md focus:outline-none">
-                        <h3 class="text-lg font-semibold text-indigo-700 flex justify-between items-center">
+            <div class="max-w-3xl mx-auto space-y-4">
+                <div>
+                    <button class="faq-question">
+                        <h3>
                             ¿Qué pasa si no funciona la huella digital u otro factor biométrico?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer hidden p-4 bg-white border-t border-gray-200 rounded-b-lg">
+                    <div class="faq-answer">
                         <p>El sistema VOTE-5D está diseñado con redundancia. Si un factor biométrico falla (ej. huella por un corte), el sistema permite usar combinaciones alternativas de los otros factores. En última instancia, y como medida de contingencia excepcional supervisada por personal electoral, se podría recurrir a una validación manual asistida con el documento de identidad, registrando el incidente para auditoría.</p>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <button class="faq-question w-full text-left p-4 bg-white rounded-lg shadow hover:shadow-md focus:outline-none">
-                        <h3 class="text-lg font-semibold text-indigo-700 flex justify-between items-center">
+                <div>
+                    <button class="faq-question">
+                        <h3>
                             ¿Cómo se protegen los datos personales y biométricos?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer hidden p-4 bg-white border-t border-gray-200 rounded-b-lg">
+                    <div class="faq-answer">
                         <p>La protección de datos es primordial. Los datos biométricos se procesan en la cabina (edge computing) y se convierten en plantillas encriptadas (hashes). Estas plantillas se usan para la autenticación y luego se descartan o se almacenan de forma disociada y segura si es estrictamente necesario para auditorías específicas, cumpliendo con la Ley N° 19.628. El voto en sí es anónimo y se desvincula de la identidad del votante antes de registrarse en la blockchain.</p>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <button class="faq-question w-full text-left p-4 bg-white rounded-lg shadow hover:shadow-md focus:outline-none">
-                        <h3 class="text-lg font-semibold text-indigo-700 flex justify-between items-center">
+                <div>
+                    <button class="faq-question">
+                        <h3>
                             ¿Quién tiene acceso a los datos electorales?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer hidden p-4 bg-white border-t border-gray-200 rounded-b-lg">
+                    <div class="faq-answer">
                         <p>El acceso a los datos está estrictamente controlado y segmentado. El SERVEL y los organismos electorales autorizados tendrán acceso a los resultados agregados y a la información de auditoría. Los datos crudos de votos son anónimos. Los datos de autenticación (plantillas biométricas) no se vinculan al voto y su acceso es restringido a procesos de auditoría de seguridad bajo estrictos protocolos.</p>
                     </div>
                 </div>
-                <div class="mb-4">
-                    <button class="faq-question w-full text-left p-4 bg-white rounded-lg shadow hover:shadow-md focus:outline-none">
-                        <h3 class="text-lg font-semibold text-indigo-700 flex justify-between items-center">
+                <div>
+                    <button class="faq-question">
+                        <h3>
                             ¿Qué auditorías están contempladas para el sistema?
-                            <i class="fas fa-chevron-down transform transition-transform duration-300"></i>
+                            <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer hidden p-4 bg-white border-t border-gray-200 rounded-b-lg">
-                        <p>Se contemplan múltiples niveles de auditoría:
-                            <ul class="list-disc list-inside ml-4 mt-2">
-                                <li>Auditoría del código fuente por entidades independientes.</li>
-                                <li>Auditorías de seguridad (pruebas de penetración, análisis de vulnerabilidades) antes y durante la implementación.</li>
-                                <li>Auditoría de la infraestructura y los procesos.</li>
-                                <li>Auditoría ciudadana: la naturaleza de blockchain permite que cualquier persona pueda verificar la integridad de la cadena de votos (anónimos).</li>
-                                <li>Auditorías post-electorales por organismos competentes.</li>
-                            </ul>
-                        </p>
+                    <div class="faq-answer">
+                        <p>Se contemplan múltiples niveles de auditoría:</p>
+                        <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
+                            <li>Auditoría del código fuente por entidades independientes.</li>
+                            <li>Auditorías de seguridad (pruebas de penetración, análisis de vulnerabilidades) antes y durante la implementación.</li>
+                            <li>Auditoría de la infraestructura y los procesos.</li>
+                            <li>Auditoría ciudadana: la naturaleza de blockchain permite que cualquier persona pueda verificar la integridad de la cadena de votos (anónimos).</li>
+                            <li>Auditorías post-electorales por organismos competentes.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="py-16 bg-indigo-700 text-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-8">Contacto y Próximos Pasos</h2>
+    <section id="contacto">
+        <div class="container">
+            <h2 class="section-title">Contacto y Próximos Pasos</h2>
             <div class="grid md:grid-cols-2 gap-10 items-start">
                 <div>
-                    <h3 class="text-2xl font-semibold mb-4">Participe en el Piloto</h3>
+                    <h3>Participe en el Piloto</h3>
                     <p class="mb-6">Si representa a una autoridad gubernamental, entidad técnica u organismo internacional y está interesado en conocer más o ser parte del programa piloto de VOTE-5D, por favor complete el siguiente formulario.</p>
-                    <form id="contact-form" class="space-y-4">
+                    <form id="contact-form" class="space-y-5">
                         <div>
-                            <label for="nombre" class="block text-sm font-medium">Nombre Completo</label>
-                            <input type="text" id="nombre" name="nombre" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-400 focus:border-yellow-400 text-gray-800">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Ej: Ana Pérez">
                         </div>
                         <div>
-                            <label for="organizacion" class="block text-sm font-medium">Organización/Institución</label>
-                            <input type="text" id="organizacion" name="organizacion" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-400 focus:border-yellow-400 text-gray-800">
+                            <label for="organizacion">Organización/Institución</label>
+                            <input type="text" id="organizacion" name="organizacion" required placeholder="Ej: Ministerio del Interior">
                         </div>
                         <div>
-                            <label for="email" class="block text-sm font-medium">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-400 focus:border-yellow-400 text-gray-800">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" name="email" required placeholder="Ej: ana.perez@email.com">
                         </div>
                         <div>
-                            <label for="mensaje" class="block text-sm font-medium">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" rows="4" class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-400 focus:border-yellow-400 text-gray-800"></textarea>
+                            <label for="mensaje">Mensaje (Opcional)</label>
+                            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Su consulta o interés..."></textarea>
                         </div>
-                        <button type="submit" class="btn bg-yellow-400 text-indigo-800 hover:bg-yellow-500 w-full">Enviar Solicitud</button>
+                        <button type="submit" class="btn">Enviar Solicitud</button>
                     </form>
                     <p id="form-status" class="mt-4 text-center"></p>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-semibold mb-4">Recursos Adicionales</h3>
-                    <ul class="space-y-3 mb-6">
-                        <li><a href="placeholder_propuesta_tecnica.pdf" download class="hover:text-yellow-300 flex items-center"><i class="fas fa-file-alt mr-2"></i>Descargar Propuesta Técnica Detallada</a></li>
-                        <li><a href="placeholder_resumen_ejecutivo.pdf" download class="hover:text-yellow-300 flex items-center"><i class="fas fa-file-invoice mr-2"></i>Descargar Resumen Ejecutivo</a></li>
-                        <li><a href="placeholder_presentacion.pdf" download class="hover:text-yellow-300 flex items-center"><i class="fas fa-file-powerpoint mr-2"></i>Descargar Presentación (PDF)</a></li>
-                    </ul>
-                    <h3 class="text-2xl font-semibold mb-4">Acceso a Entorno de Pruebas</h3>
-                    <p class="mb-4">Solicite acceso a nuestro sandbox para una demostración técnica y para explorar las funcionalidades del sistema.</p>
-                    <button id="sandbox-request-btn" class="btn bg-white text-indigo-700 hover:bg-gray-100 w-full">
-                        <i class="fas fa-vial mr-2"></i>Solicitar Acceso al Sandbox
-                    </button>
+                <div class="space-y-8">
+                    <div>
+                        <h3>Recursos Adicionales</h3>
+                        <ul class="space-y-3">
+                            <li><a href="placeholder_propuesta_tecnica.pdf" download class="flex items-center"><i class="fas fa-file-alt mr-2"></i>Descargar Propuesta Técnica Detallada</a></li>
+                            <li><a href="placeholder_resumen_ejecutivo.pdf" download class="flex items-center"><i class="fas fa-file-invoice mr-2"></i>Descargar Resumen Ejecutivo</a></li>
+                            <li><a href="placeholder_presentacion.pdf" download class="flex items-center"><i class="fas fa-file-powerpoint mr-2"></i>Descargar Presentación (PDF)</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Acceso a Entorno de Pruebas</h3>
+                        <p class="mb-4">Solicite acceso a nuestro sandbox para una demostración técnica y para explorar las funcionalidades del sistema.</p>
+                        <button id="sandbox-request-btn" class="btn btn-secondary w-full">
+                            <i class="fas fa-vial mr-2"></i>Solicitar Acceso al Sandbox
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="bg-gray-800 text-gray-300 py-12">
-        <div class="container mx-auto px-6 text-center">
+    <footer>
+        <div class="container text-center">
             <p>&copy; <span id="current-year"></span> Proyecto VOTE-5D. Todos los derechos reservados.</p>
-            <p class="text-sm mt-2">Una iniciativa para fortalecer la democracia en Chile.</p>
+            <p>Una iniciativa para fortalecer la democracia en Chile.</p>
             <div class="mt-4">
-                </div>
+            </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                if (this.getAttribute('href') !== "#") {
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-                // Close mobile menu on item click
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
-            });
-        });
-
-        // FAQ Accordion
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('i');
-                answer.classList.toggle('hidden');
-                icon.classList.toggle('fa-chevron-down');
-                icon.classList.toggle('fa-chevron-up');
-            });
-        });
-
-        // Modal for 3D Prototype
-        const explorePrototypeBtn = document.getElementById('explore-prototype-btn');
-        const modal3D = document.getElementById('modal-3d');
-        const closeModalBtn = document.getElementById('close-modal-btn');
-
-        explorePrototypeBtn.addEventListener('click', () => {
-            modal3D.classList.add('active');
-            // Aquí se podría iniciar la carga del modelo 3D si es necesario
-            // Por ejemplo: loadThreeJSModel() o loadSketchfabEmbed()
-        });
-
-        closeModalBtn.addEventListener('click', () => {
-            modal3D.classList.remove('active');
-            // Aquí se podría detener o pausar el modelo 3D si es necesario
-        });
-
-        // Close modal if clicked outside of the content
-        modal3D.addEventListener('click', (event) => {
-            if (event.target === modal3D) {
-                modal3D.classList.remove('active');
-            }
-        });
-
-
-        // Contact Form Submission (Basic Example)
-        const contactForm = document.getElementById('contact-form');
-        const formStatus = document.getElementById('form-status');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                // Aquí iría la lógica para enviar el formulario (e.g., usando Fetch API a un backend)
-                // Por ahora, solo mostramos un mensaje de éxito.
-                formStatus.textContent = 'Gracias por su mensaje. Nos pondremos en contacto pronto.';
-                formStatus.className = 'mt-4 text-center text-green-300';
-                contactForm.reset();
-                setTimeout(() => { formStatus.textContent = ''; }, 5000);
-            });
-        }
-        
-        // Sandbox request button (conceptual)
-        const sandboxRequestBtn = document.getElementById('sandbox-request-btn');
-        if (sandboxRequestBtn) {
-            sandboxRequestBtn.addEventListener('click', () => {
-                // Podría abrir un modal diferente, redirigir o integrarse con el form de contacto
-                alert('Gracias por su interés. Esta funcionalidad se activará pronto. Por ahora, puede usar el formulario de contacto para solicitar acceso.');
-            });
-        }
-
-        // Language Switcher (Conceptual)
-        const langSwitcher = document.getElementById('lang-switcher');
-        let currentLang = 'es';
-        if (langSwitcher) {
-            langSwitcher.addEventListener('click', () => {
-                if (currentLang === 'es') {
-                    // Lógica para cambiar a Inglés
-                    // Esto implicaría tener versiones en inglés de todo el texto
-                    // y actualizar el DOM. Es una tarea compleja para JS puro sin un framework.
-                    alert('Funcionalidad de cambio de idioma (EN) pendiente de implementación.');
-                    // langSwitcher.textContent = 'ES';
-                    // currentLang = 'en';
-                } else {
-                    // Lógica para cambiar a Español
-                    alert('Funcionalidad de cambio de idioma (ES) pendiente de implementación.');
-                    // langSwitcher.textContent = 'EN';
-                    // currentLang = 'es';
-                }
-            });
-        }
-
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Placeholder for 3D model elements interaction
-        // document.getElementById('interactive-3d-viewer').addEventListener('some3DEvent', (detail) => {
-        //    console.log('Interacted with 3D element:', detail);
-        //    // Show more info about the clicked part of the 3D model
-        // });
-
-        // Placeholder for animated charts
-        // function animateImpactChart() {
-        //    console.log('Animate impact chart...');
-        //    // Use a library like Chart.js or D3.js to draw and animate
-        // }
-        // window.addEventListener('load', animateImpactChart);
-
-        // Placeholder for interactive technical diagram
-        // function initInteractiveDiagram() {
-        //    console.log('Initialize interactive technical diagram...');
-        //    // Add event listeners to parts of an SVG or image map
-        // }
-        // window.addEventListener('load', initInteractiveDiagram);
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
