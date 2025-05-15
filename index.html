@@ -90,8 +90,8 @@
                         <li><i class="fas fa-signature"></i>Firma digital</li>
                         <li><i class="fas fa-mobile-alt"></i>Autenticador móvil (NFC/QR)</li>
                     </ul>
-                    <div class="mt-6 bg-white p-4 rounded-lg shadow-md">
-                        <canvas id="fiveFactorAuthChart" class="max-w-md mx-auto"></canvas>
+                    <div class="mt-6 bg-white p-4 rounded-lg shadow-md chart-container-doughnut">
+                        <canvas id="fiveFactorAuthChart"></canvas> {/* Se quitó clase max-w-md y mx-auto de aquí */}
                     </div>
                 </div>
                 <div class="space-y-6">
@@ -177,9 +177,9 @@
                     <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Comunidades Aisladas</span>
                 </div>
             </div>
-            <div class="mt-10 p-6 bg-gray-50 rounded-lg shadow">
+            <div class="mt-10 p-6 bg-gray-50 rounded-lg shadow chart-container-bar">
                 <h4 class="text-xl font-semibold mb-3 text-center">Visualización de Impacto</h4>
-                <canvas id="impactChart" class="w-full"></canvas>
+                <canvas id="impactChart" class="w-full"></canvas> {/* w-full es manejado por Tailwind */}
                 <p class="text-sm text-gray-500 mt-2 text-center">Este gráfico muestra las métricas de impacto proyectadas.</p>
             </div>
         </div>
