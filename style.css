@@ -1,0 +1,353 @@
+/* style.css */
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Tailwind CSS Directives & Base Styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables de Color Institucionales */
+:root {
+    --color-primary: #1a237e; /* Azul oscuro institucional */
+    --color-primary-darker: #10175c;
+    --color-secondary: #4f46e5; /* Indigo-600 de Tailwind */
+    --color-secondary-hover: #4338ca; /* Indigo-700 de Tailwind */
+    --color-accent: #facc15; /* Yellow-400 de Tailwind */
+    --color-accent-hover: #eab308; /* Yellow-500 de Tailwind */
+    --text-primary: #1f2937; /* Gray-800 */
+    --text-secondary: #4b5563; /* Gray-600 */
+    --text-light: #ffffff;
+    --bg-light: #f9fafb; /* Gray-50 */
+    --bg-white: #ffffff;
+    --border-color: #e5e7eb; /* Gray-200 */
+}
+
+/* Estilos Globales */
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.75em;
+}
+
+h1 { @apply text-4xl md:text-5xl; }
+h2 { @apply text-3xl md:text-4xl; }
+h3 { @apply text-2xl; }
+h4 { @apply text-xl; }
+
+p {
+    margin-bottom: 1em;
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-secondary-hover);
+}
+
+.container {
+    @apply mx-auto px-6;
+}
+
+/* Header y Navegación */
+header {
+    @apply bg-white shadow-md sticky top-0 z-50 transition-shadow duration-300;
+}
+header nav a.text-2xl { /* Logo VOTE-5D */
+    color: var(--color-primary);
+}
+header nav a:not(.text-2xl) { /* Links de navegación */
+    @apply text-gray-600 py-2 px-1 hover:text-indigo-600 relative;
+}
+/* Indicador visual para el link activo (opcional, requeriría JS para detectar sección actual) */
+header nav a:not(.text-2xl)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transition: width 0.3s ease;
+}
+header nav a:not(.text-2xl):hover::after {
+    width: 100%;
+}
+
+#mobile-menu a {
+    @apply block px-6 py-3 text-gray-600 hover:bg-indigo-50 hover:text-indigo-700 transition-colors duration-200;
+}
+
+/* Botones */
+.btn {
+    @apply px-6 py-3 rounded-md font-semibold text-base shadow-sm hover:shadow-md transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--text-light);
+    @apply focus:ring-indigo-500;
+}
+.btn-primary:hover {
+    background-color: var(--color-secondary-hover);
+    color: var(--text-light); /* Asegurar que el color de texto no cambie si es blanco */
+}
+
+.btn-secondary { /* Para botones menos prominentes o de descarga */
+    background-color: var(--bg-light);
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary);
+    @apply focus:ring-indigo-400;
+}
+.btn-secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--text-light);
+    border-color: var(--color-secondary-hover);
+}
+
+/* Hero Section */
+.hero-bg {
+    background-color: var(--color-primary);
+    color: var(--text-light);
+}
+.hero-bg h1 {
+    color: var(--text-light);
+    @apply text-4xl md:text-6xl; /* Tailwind classes for responsiveness */
+}
+.hero-bg p {
+    color: #e0e0e0; /* Un blanco ligeramente más suave para el subtítulo */
+    @apply text-lg md:text-2xl;
+}
+.hero-bg .btn-primary { /* Botón específico del hero */
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    @apply focus:ring-yellow-300;
+}
+.hero-bg .btn-primary:hover {
+    background-color: var(--color-accent-hover);
+    color: var(--color-primary-darker);
+}
+#3d-model-container-hero { /* Placeholder en el hero */
+    @apply mt-12 w-full max-w-3xl mx-auto h-96 bg-gray-700/30 rounded-lg flex items-center justify-center text-gray-300 border border-gray-600/50;
+}
+
+
+/* Secciones Generales */
+section {
+    @apply py-16 md:py-20;
+}
+.section-title {
+    @apply text-3xl font-bold text-center mb-12 md:mb-16;
+    color: var(--color-primary);
+}
+
+/* Cards */
+.card {
+    @apply bg-white p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out;
+    border: 1px solid var(--border-color);
+}
+.card h3, .card h4 { /* Títulos dentro de las cards */
+    color: var(--color-secondary);
+    margin-top: 0; /* Evitar doble margen */
+}
+.card p {
+    @apply text-sm text-gray-600;
+}
+.card i.fas { /* Iconos en las cards */
+    color: var(--color-secondary);
+}
+
+
+/* Modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    @apply fixed inset-0 bg-black bg-opacity-80 items-center justify-center p-4 z-[100] transition-opacity duration-300;
+}
+.modal.active {
+    display: flex; /* Mostrar cuando activo */
+    opacity: 1;
+}
+.modal > div { /* Contenedor interno del modal */
+    @apply bg-white p-6 rounded-lg shadow-xl max-w-4xl w-full relative transition-transform duration-300 scale-95;
+}
+.modal.active > div {
+    @apply scale-100;
+}
+#interactive-3d-viewer {
+    @apply w-full h-[60vh] bg-gray-100 rounded-md border border-gray-300 flex items-center justify-center relative overflow-hidden;
+}
+#interactive-3d-viewer canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+}
+#loading-text {
+    @apply text-gray-500 text-lg;
+}
+.modal #close-modal-btn {
+    @apply absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-3xl transition-colors;
+    z-index: 10; /* Asegurar que esté sobre el canvas */
+}
+
+/* Estilos para la lista de elementos interactivos en el modal 3D */
+#interactive-3d-viewer ul {
+    @apply absolute bottom-4 left-4 bg-white/90 p-3 rounded-md shadow-md text-xs z-10;
+}
+#interactive-3d-viewer ul li {
+    @apply flex items-center text-gray-700 mb-1;
+}
+#interactive-3d-viewer ul li i {
+    @apply mr-2 text-indigo-500;
+}
+
+
+/* Sección de Seguridad */
+#seguridad .list-disc {
+    @apply space-y-2 mb-6;
+}
+#seguridad .list-disc li {
+    @apply flex items-center;
+}
+#seguridad .list-disc i.fas {
+    @apply text-indigo-500 mr-3 text-lg;
+}
+
+/* Sección Impacto */
+#impacto .card .text-4xl {
+    color: var(--color-secondary);
+}
+#impacto .bg-indigo-100 { /* Tags de casos de uso */
+    @apply font-medium;
+}
+
+/* Sección Presupuesto (Tabla) */
+#presupuesto table {
+    @apply w-full min-w-max text-left;
+}
+#presupuesto th {
+    @apply py-3 px-4 font-semibold border-b-2 border-gray-300;
+    color: var(--color-primary);
+}
+#presupuesto td {
+    @apply py-3 px-4 border-b border-gray-200 text-sm text-gray-700;
+}
+#presupuesto tbody tr:hover {
+    @apply bg-indigo-50;
+}
+
+/* Sección Arquitectura */
+#arquitectura img { /* Placeholder del diagrama */
+    @apply border border-gray-300;
+}
+
+/* Sección FAQ */
+.faq-question {
+    @apply w-full text-left p-4 bg-white rounded-lg shadow hover:shadow-md focus:outline-none transition-all duration-200;
+    border: 1px solid var(--border-color);
+}
+.faq-question h3 {
+    @apply text-lg font-semibold flex justify-between items-center;
+    color: var(--color-primary); /* Título de la pregunta */
+}
+.faq-question i.fas {
+    @apply transform transition-transform duration-300 text-indigo-500;
+}
+.faq-answer {
+    @apply hidden p-4 bg-white border-t-0 border border-gray-200 rounded-b-lg text-sm;
+}
+.faq-answer.hidden {
+    /* La clase 'hidden' de Tailwind ya hace display: none !important */
+}
+.faq-answer p, .faq-answer ul {
+    @apply mb-0; /* Resetear margen inferior para el último párrafo/lista en la respuesta */
+}
+
+
+/* Sección Contacto */
+#contacto {
+    background-color: var(--color-primary);
+    color: var(--text-light);
+}
+#contacto h2, #contacto h3 {
+    color: var(--text-light);
+}
+#contacto p {
+    color: #e0e0e0;
+}
+#contacto label {
+    @apply block text-sm font-medium mb-1 text-gray-200;
+}
+#contacto input[type="text"],
+#contacto input[type="email"],
+#contacto textarea {
+    @apply mt-1 block w-full px-4 py-2.5 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 text-gray-800 placeholder-gray-400;
+}
+#contacto textarea {
+    min-height: 100px;
+}
+#contacto button[type="submit"] {
+    background-color: var(--color-accent);
+    color: var(--color-primary-darker);
+    @apply w-full focus:ring-yellow-300;
+}
+#contacto button[type="submit"]:hover {
+    background-color: var(--color-accent-hover);
+}
+#contacto #form-status {
+    @apply mt-4 text-center text-green-300; /* Color para mensaje de éxito */
+}
+#contacto .hover\:text-yellow-300:hover { /* Para enlaces de descarga */
+    color: var(--color-accent-hover) !important;
+}
+#contacto #sandbox-request-btn {
+    background-color: var(--bg-white);
+    color: var(--color-primary);
+    @apply w-full border border-transparent;
+}
+#contacto #sandbox-request-btn:hover {
+    background-color: var(--bg-light);
+    border-color: var(--bg-light);
+}
+
+
+/* Footer */
+footer {
+    @apply bg-gray-800 text-gray-400 py-12 text-sm;
+}
+footer p {
+    @apply text-gray-400 mb-1;
+}
+
+/* Scrollbar (Opcional, Webkit browsers) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+
