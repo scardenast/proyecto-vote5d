@@ -28,28 +28,28 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
-    margin: 0; /* Asegurar que no haya margen por defecto */
+    margin: 0; 
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
     color: var(--color-primary);
-    margin-top: 0; /* Quitar margen superior por defecto */
+    margin-top: 0; 
     margin-bottom: 0.75em;
 }
 
-h1 { font-size: 2.25rem; line-height: 2.5rem; } /* text-4xl */
-@media (min-width: 768px) { /* md: */
-    h1 { font-size: 3rem; line-height: 1; } /* md:text-5xl */
+h1 { font-size: 2.25rem; line-height: 2.5rem; } 
+@media (min-width: 768px) { 
+    h1 { font-size: 3rem; line-height: 1; } 
 }
 
-h2 { font-size: 1.875rem; line-height: 2.25rem; } /* text-3xl */
-@media (min-width: 768px) { /* md: */
-    h2 { font-size: 2.25rem; line-height: 2.5rem; } /* md:text-4xl */
+h2 { font-size: 1.875rem; line-height: 2.25rem; } 
+@media (min-width: 768px) { 
+    h2 { font-size: 2.25rem; line-height: 2.5rem; } 
 }
 
-h3 { font-size: 1.5rem; line-height: 2rem; } /* text-2xl */
-h4 { font-size: 1.25rem; line-height: 1.75rem; } /* text-xl */
+h3 { font-size: 1.5rem; line-height: 2rem; } 
+h4 { font-size: 1.25rem; line-height: 1.75rem; } 
 
 p {
     margin-bottom: 1em;
@@ -65,42 +65,26 @@ a:hover {
     color: var(--color-secondary-hover);
 }
 
-.container { /* Esta clase ya está en tu HTML, Tailwind CDN la manejará */
-    /* max-width: 1280px; /* Ejemplo de un contenedor típico xl */
-    /* margin-left: auto;
-    /* margin-right: auto;
-    /* padding-left: 1.5rem; /* px-6 */
-    /* padding-right: 1.5rem; */
-}
-
 /* Header y Navegación */
 header {
     background-color: var(--bg-white);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); 
     position: sticky;
     top: 0;
     z-index: 50;
     transition: box-shadow 0.3s ease;
 }
-header nav a.text-2xl { /* Logo VOTE-5D */
+header nav a.text-2xl { 
     color: var(--color-primary);
     font-weight: bold;
 }
-header nav div.hidden a { /* Links de navegación desktop */
-    color: var(--text-secondary); /* text-gray-600 */
-    padding-top: 0.5rem; /* py-2 */
-    padding-bottom: 0.5rem;
-    padding-left: 0.25rem; /* px-1 */
-    padding-right: 0.25rem;
-    position: relative;
-}
-header nav div.hidden a:hover {
-    color: var(--color-secondary); /* hover:text-indigo-600 */
+header nav div.hidden a { 
+    position: relative; 
 }
 header nav div.hidden a::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -2px; 
     left: 0;
     width: 0;
     height: 2px;
@@ -113,60 +97,56 @@ header nav div.hidden a:hover::after {
 
 #mobile-menu a {
     display: block;
-    padding: 0.75rem 1.5rem; /* px-6 py-3 */
-    color: var(--text-secondary); /* text-gray-600 */
+    padding: 0.75rem 1.5rem; 
+    color: var(--text-secondary); 
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 #mobile-menu a:hover {
-    background-color: #eef2ff; /* indigo-50 */
-    color: var(--color-secondary-hover); /* hover:text-indigo-700 */
+    background-color: #eef2ff; 
+    color: var(--color-secondary-hover); 
 }
 
 /* Botones */
 .btn {
-    padding: 0.75rem 1.5rem; /* px-6 py-3 */
-    border-radius: 0.375rem; /* rounded-md */
-    font-weight: 600; /* font-semibold */
-    font-size: 1rem; /* text-base */
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+    padding: 0.75rem 1.5rem; 
+    border-radius: 0.375rem; 
+    font-weight: 600; 
+    font-size: 1rem; 
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); 
     transition: all 0.3s ease-in-out;
     letter-spacing: 0.5px;
-    border: 1px solid transparent; /* Para consistencia de tamaño */
+    border: 1px solid transparent; 
     cursor: pointer;
     text-align: center;
-    display: inline-flex; /* Para alinear íconos y texto */
+    display: inline-flex; 
     align-items: center;
     justify-content: center;
 }
 .btn:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    /* Implementar focus rings manualmente si es necesario, ej: box-shadow: 0 0 0 3px var(--color-secondary-hover); */
 }
 .btn:hover {
-     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
+     box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); 
 }
 
-.btn-primary { /* Usado en Hero y Descargar Propuesta */
+.btn-primary { 
     background-color: var(--color-secondary);
     color: var(--text-light);
 }
 .btn-primary:hover {
     background-color: var(--color-secondary-hover);
-    color: var(--text-light);
 }
-/* Botón específico del hero (amarillo) */
 #hero .btn-primary {
     background-color: var(--color-accent);
-    color: var(--color-primary-darker); /* Ajustado para mejor contraste */
+    color: var(--color-primary-darker); 
 }
 #hero .btn-primary:hover {
     background-color: var(--color-accent-hover);
-    color: var(--color-primary-darker);
 }
 
-.btn-secondary { /* Para Sandbox Request */
-    background-color: var(--bg-white); /* Tailwind: bg-gray-50 or bg-white */
+.btn-secondary { 
+    background-color: var(--bg-white); 
     color: var(--color-secondary);
     border: 1px solid var(--color-secondary);
 }
@@ -180,93 +160,78 @@ header nav div.hidden a:hover::after {
 .hero-bg {
     background-color: var(--color-primary);
     color: var(--text-light);
-    /* min-height: 100vh; ya en el HTML */
-    /* display: flex; align-items: center; ya en el HTML */
 }
 .hero-bg h1 {
     color: var(--text-light);
-    /* Tamaños ya definidos arriba */
 }
-.hero-bg p { /* Subtítulo del Hero */
-    color: #e0e7ff; /* Un blanco ligeramente más suave, indigo-100 approx */
-    font-size: 1.125rem; /* text-lg */
+.hero-bg p { 
+    color: #e0e7ff; 
+    font-size: 1.125rem; 
     line-height: 1.75rem;
-    margin-bottom: 2.5rem; /* mb-10 */
+    margin-bottom: 2.5rem; 
 }
-@media (min-width: 768px) { /* md: */
+@media (min-width: 768px) { 
     .hero-bg p {
-        font-size: 1.5rem; /* md:text-2xl */
+        font-size: 1.5rem; 
         line-height: 2rem;
     }
 }
 #3d-model-container-hero {
-    margin-top: 3rem; /* mt-12 */
-    width: 100%;
-    max-width: 48rem; /* max-w-3xl */
-    margin-left: auto;
-    margin-right: auto;
-    height: 24rem; /* h-96 */
-    background-color: rgba(55, 65, 81, 0.3); /* bg-gray-700/30 */
-    border-radius: 0.5rem; /* rounded-lg */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #d1d5db; /* text-gray-300 */
-    border: 1px solid rgba(75, 85, 99, 0.5); /* border-gray-600/50 */
+    margin-top: 3rem; 
+    background-color: rgba(55, 65, 81, 0.3); 
+    border: 1px solid rgba(75, 85, 99, 0.5); 
 }
-
 
 /* Secciones Generales */
 section {
-    padding-top: 4rem; /* py-16 */
+    padding-top: 4rem; 
     padding-bottom: 4rem;
 }
-@media (min-width: 768px) { /* md: */
+@media (min-width: 768px) { 
     section {
-        padding-top: 5rem; /* md:py-20 */
+        padding-top: 5rem; 
         padding-bottom: 5rem;
     }
 }
 .section-title {
-    font-size: 1.875rem; /* text-3xl */
-    font-weight: 700; /* font-bold */
+    font-size: 1.875rem; 
+    font-weight: 700; 
     text-align: center;
-    margin-bottom: 3rem; /* mb-12 */
+    margin-bottom: 3rem; 
     color: var(--color-primary);
 }
-@media (min-width: 768px) { /* md: */
+@media (min-width: 768px) { 
     .section-title {
-        margin-bottom: 4rem; /* md:mb-16 */
+        margin-bottom: 4rem; 
     }
 }
 
 /* Cards */
 .card {
     background-color: var(--bg-white);
-    padding: 1.5rem; /* p-6 */
-    border-radius: 0.75rem; /* rounded-xl */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    padding: 1.5rem; 
+    border-radius: 0.75rem; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
     transition: box-shadow 0.3s ease-in-out;
     border: 1px solid var(--border-color);
 }
 .card:hover {
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); /* shadow-2xl */
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); 
 }
 .card h3, .card h4 {
     color: var(--color-secondary);
     margin-top: 0;
-    margin-bottom: 0.5rem; /* mb-2 */
+    margin-bottom: 0.5rem; 
 }
 .card p {
-    font-size: 0.875rem; /* text-sm */
-    color: #4b5563; /* text-gray-600 */
-    line-height: 1.5; /* Ajuste para mejor lectura */
+    font-size: 0.875rem; 
+    color: #4b5563; 
+    line-height: 1.5; 
 }
 .card i.fas {
     color: var(--color-secondary);
-    margin-right: 0.5rem; /* mr-2 */
+    margin-right: 0.5rem; 
 }
-
 
 /* Modal */
 .modal {
@@ -285,12 +250,12 @@ section {
     display: flex;
     opacity: 1;
 }
-.modal > div { /* Contenedor interno del modal */
+.modal > div { 
     background-color: var(--bg-white);
-    padding: 1.5rem; /* p-6 */
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); /* shadow-xl */
-    max-width: 56rem; /* max-w-4xl */
+    padding: 1.5rem; 
+    border-radius: 0.5rem; 
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04); 
+    max-width: 56rem; 
     width: 100%;
     position: relative;
     transform: scale(0.95);
@@ -301,10 +266,10 @@ section {
 }
 #interactive-3d-viewer {
     width: 100%;
-    height: 60vh; /* h-[60vh] */
-    background-color: var(--border-color); /* bg-gray-200 */
-    border-radius: 0.375rem; /* rounded-md */
-    border: 1px solid var(--border-color-darker); /* border-gray-300 */
+    height: 60vh; 
+    background-color: var(--border-color); 
+    border-radius: 0.375rem; 
+    border: 1px solid var(--border-color-darker); 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -313,19 +278,19 @@ section {
 }
 #interactive-3d-viewer canvas {
     display: block;
-    width: 100% !important; /* Importante para Three.js */
+    width: 100% !important; 
     height: 100% !important;
 }
 #loading-text {
-    color: var(--text-secondary); /* text-gray-500 */
-    font-size: 1.125rem; /* text-lg */
+    color: var(--text-secondary); 
+    font-size: 1.125rem; 
 }
 .modal #close-modal-btn {
     position: absolute;
-    top: 0.75rem; /* top-3 */
-    right: 0.75rem; /* right-3 */
-    color: var(--text-secondary); /* text-gray-500 */
-    font-size: 1.875rem; /* text-3xl */
+    top: 0.75rem; 
+    right: 0.75rem; 
+    color: var(--text-secondary); 
+    font-size: 1.875rem; 
     line-height: 1;
     background: none;
     border: none;
@@ -335,152 +300,156 @@ section {
     z-index: 10;
 }
 .modal #close-modal-btn:hover {
-    color: var(--text-primary); /* hover:text-gray-800 */
+    color: var(--text-primary); 
 }
 
-/* Lista de elementos interactivos en el modal 3D */
-ul.interactive-elements-list { /* Se añadió esta clase al HTML */
+ul.interactive-elements-list { 
     position: absolute;
-    bottom: 1rem; /* bottom-4 */
-    left: 1rem; /* left-4 */
-    background-color: rgba(255, 255, 255, 0.9); /* bg-white/90 */
-    padding: 0.75rem; /* p-3 */
-    border-radius: 0.375rem; /* rounded-md */
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* shadow-md */
-    font-size: 0.75rem; /* text-xs */
+    bottom: 1rem; 
+    left: 1rem; 
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 0.75rem; 
+    border-radius: 0.375rem; 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); 
+    font-size: 0.75rem; 
     z-index: 10;
-    list-style: none; /* Quitar viñetas por defecto */
+    list-style: none; 
     margin: 0;
 }
 ul.interactive-elements-list li {
     display: flex;
     align-items: center;
-    color: var(--text-primary); /* text-gray-700 */
-    margin-bottom: 0.25rem; /* mb-1 */
+    color: var(--text-primary); 
+    margin-bottom: 0.25rem; 
 }
 ul.interactive-elements-list li:last-child {
     margin-bottom: 0;
 }
 ul.interactive-elements-list li i {
-    margin-right: 0.5rem; /* mr-2 */
-    color: var(--color-secondary); /* text-indigo-500 */
+    margin-right: 0.5rem; 
+    color: var(--color-secondary); 
+}
+
+/* Chart Container Styles */
+.chart-container-doughnut {
+    max-width: 22rem; /* Ajustado para ser un poco más pequeño que md */
+    height: auto; /* La altura se ajustará por el aspect ratio */
+    margin-left: auto;
+    margin-right: auto;
+    position: relative; 
+}
+
+.chart-container-bar {
+    height: 400px; /* Altura fija para el gráfico de barras */
+    max-height: 450px; /* Un máximo por si acaso */
+    position: relative; 
+    width: 100%; /* Asegurar que tome el ancho disponible */
+}
+
+/* Asegurar que los canvas dentro de estos contenedores se comporten bien */
+.chart-container-doughnut canvas,
+.chart-container-bar canvas {
+    /* Chart.js maneja el tamaño del canvas basado en el contenedor y sus opciones.
+       No es estrictamente necesario forzar width/height 100% aquí si las opciones de Chart.js
+       (responsive: true) y el dimensionamiento del contenedor son correctos.
+    */
 }
 
 
 /* Sección de Seguridad */
-#seguridad ul.list-disc { /* Clase ya en HTML */
-    list-style: none; /* Quitar viñetas por defecto, usamos iconos */
+#seguridad ul.list-disc { 
+    list-style: none; 
     padding-left: 0;
-    margin-bottom: 1.5rem; /* mb-6 */
+    margin-bottom: 1.5rem; 
 }
 #seguridad ul.list-disc li {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem; /* space-y-2 */
+    margin-bottom: 0.5rem; 
 }
 #seguridad ul.list-disc i.fas {
-    color: var(--color-secondary); /* text-indigo-500 */
-    margin-right: 0.75rem; /* mr-3 */
-    font-size: 1.125rem; /* text-lg */
+    color: var(--color-secondary); 
+    margin-right: 0.75rem; 
+    font-size: 1.125rem; 
 }
-#seguridad .mt-6 { margin-top: 1.5rem; }
-#seguridad .bg-white { background-color: var(--bg-white); }
-#seguridad .p-4 { padding: 1rem; }
-#seguridad .rounded-lg { border-radius: 0.5rem; }
-#seguridad .shadow-md { box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); }
-#seguridad canvas.max-w-md { max-width: 28rem; }
-#seguridad canvas.mx-auto { margin-left: auto; margin-right: auto; }
-
 
 /* Sección Impacto */
-#impacto .card .text-4xl { /* Los números grandes en las cards de impacto */
+#impacto .card .text-4xl { 
     color: var(--color-secondary);
     font-weight: bold;
-    font-size: 2.25rem; /* text-4xl */
-    margin-bottom: 0.5rem; /* mb-2 */
-}
-/* Tags de casos de uso (ej. Sectores Mineros) */
-#impacto .bg-indigo-100 { /* Esta clase está en el HTML */
-    background-color: #e0e7ff; /* indigo-100 */
-    color: #3730a3; /* indigo-700 */
-    font-weight: 500; /* font-medium */
-    /* padding, border-radius ya están en el HTML */
+    font-size: 2.25rem; 
+    margin-bottom: 0.5rem; 
 }
 
 /* Sección Presupuesto (Tabla) */
 #presupuesto table {
     width: 100%;
-    min-width: 640px; /* min-w-max approx */
     text-align: left;
-    border-collapse: collapse; /* Para que los bordes se vean bien */
+    border-collapse: collapse; 
 }
 #presupuesto th {
-    padding: 0.75rem 1rem; /* py-3 px-4 */
-    font-weight: 600; /* font-semibold */
-    border-bottom: 2px solid var(--border-color-darker); /* border-b-2 border-gray-300 */
+    padding: 0.75rem 1rem; 
+    font-weight: 600; 
+    border-bottom: 2px solid var(--border-color-darker); 
     color: var(--color-primary);
-    background-color: #f3f4f6; /* Un gris muy claro para el encabezado */
+    background-color: #f3f4f6; 
 }
 #presupuesto td {
-    padding: 0.75rem 1rem; /* py-3 px-4 */
-    border-bottom: 1px solid var(--border-color); /* border-b border-gray-200 */
-    font-size: 0.875rem; /* text-sm */
-    color: var(--text-secondary); /* text-gray-700 */
+    padding: 0.75rem 1rem; 
+    border-bottom: 1px solid var(--border-color); 
+    font-size: 0.875rem; 
+    color: var(--text-secondary); 
 }
 #presupuesto tbody tr:hover {
-    background-color: #eef2ff; /* indigo-50 */
+    background-color: #eef2ff; 
 }
-#presupuesto .text-right { text-align: right; }
 
 /* Sección Arquitectura */
-#arquitectura img { /* Placeholder del diagrama */
-    border: 1px solid var(--border-color-darker); /* border-gray-300 */
-    /* rounded-lg shadow-md w-full mx-auto ya en HTML */
+#arquitectura img { 
+    border: 1px solid var(--border-color-darker); 
 }
 
 /* Sección FAQ */
 .faq-question {
     width: 100%;
     text-align: left;
-    padding: 1rem; /* p-4 */
+    padding: 1rem; 
     background-color: var(--bg-white);
-    border-radius: 0.5rem; /* rounded-lg */
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06); /* shadow */
+    border-radius: 0.5rem; 
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06); 
     border: 1px solid var(--border-color);
     cursor: pointer;
     transition: box-shadow 0.2s ease;
 }
 .faq-question:hover {
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); /* hover:shadow-md */
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06); 
 }
 .faq-question h3 {
-    font-size: 1.125rem; /* text-lg */
-    font-weight: 600; /* font-semibold */
+    font-size: 1.125rem; 
+    font-weight: 600; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--color-primary);
-    margin-bottom: 0; /* Quitar margen inferior de h3 dentro del botón */
+    margin-bottom: 0; 
 }
 .faq-question i.fas {
     transform-origin: center;
     transition: transform 0.3s ease;
-    color: var(--color-secondary); /* text-indigo-500 */
+    color: var(--color-secondary); 
 }
 .faq-answer {
-    /* 'hidden' class from Tailwind handles display: none */
-    padding: 1rem; /* p-4 */
+    padding: 1rem; 
     background-color: var(--bg-white);
     border: 1px solid var(--border-color);
-    border-top: none; /* Evitar doble borde */
-    border-bottom-left-radius: 0.5rem; /* rounded-b-lg */
+    border-top: none; 
+    border-bottom-left-radius: 0.5rem; 
     border-bottom-right-radius: 0.5rem;
-    font-size: 0.875rem; /* text-sm */
+    font-size: 0.875rem; 
 }
 .faq-answer p, .faq-answer ul {
     margin-bottom: 0;
 }
-
 
 /* Sección Contacto */
 #contacto {
@@ -491,48 +460,48 @@ ul.interactive-elements-list li i {
     color: var(--text-light);
 }
 #contacto p {
-    color: #dbeafe; /* Un azul muy claro, blue-200 approx */
+    color: #dbeafe; 
 }
 #contacto label {
     display: block;
-    font-size: 0.875rem; /* text-sm */
-    font-weight: 500; /* font-medium */
-    margin-bottom: 0.25rem; /* mb-1 */
-    color: #bfdbfe; /* text-gray-200 (ajustado a azul claro) */
+    font-size: 0.875rem; 
+    font-weight: 500; 
+    margin-bottom: 0.25rem; 
+    color: #bfdbfe; 
 }
 #contacto input[type="text"],
 #contacto input[type="email"],
 #contacto textarea {
-    margin-top: 0.25rem; /* mt-1 */
+    margin-top: 0.25rem; 
     display: block;
     width: 100%;
-    padding: 0.625rem 1rem; /* px-4 py-2.5 (ajustado) */
+    padding: 0.625rem 1rem; 
     background-color: var(--bg-white);
-    border: 1px solid var(--border-color-darker); /* border-gray-300 */
-    border-radius: 0.375rem; /* rounded-md */
-    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); /* shadow-sm */
-    color: var(--text-primary); /* text-gray-800 */
+    border: 1px solid var(--border-color-darker); 
+    border-radius: 0.375rem; 
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); 
+    color: var(--text-primary); 
 }
 #contacto input[type="text"]::placeholder,
 #contacto input[type="email"]::placeholder,
 #contacto textarea::placeholder {
-    color: #9ca3af; /* placeholder-gray-400 */
+    color: #9ca3af; 
 }
 #contacto input[type="text"]:focus,
 #contacto input[type="email"]:focus,
 #contacto textarea:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    border-color: var(--color-accent); /* focus:border-yellow-400 */
-    box-shadow: 0 0 0 2px var(--color-accent); /* focus:ring-2 focus:ring-yellow-400 */
+    border-color: var(--color-accent); 
+    box-shadow: 0 0 0 2px var(--color-accent); 
 }
 #contacto textarea {
     min-height: 100px;
 }
-#contacto button[type="submit"].btn { /* Hereda .btn pero especifica colores */
+#contacto button[type="submit"].btn { 
     background-color: var(--color-accent);
-    color: var(--color-primary-darker); /* Ajustado para contraste */
-    width: 100%;
+    color: var(--color-primary-darker); 
+    width: 100%; 
     border-color: var(--color-accent);
 }
 #contacto button[type="submit"].btn:hover {
@@ -540,30 +509,27 @@ ul.interactive-elements-list li i {
     border-color: var(--color-accent-hover);
 }
 #contacto #form-status {
-    margin-top: 1rem; /* mt-4 */
-    text-align: center;
-    /* El color se establece dinámicamente en JS */
+    margin-top: 1rem; 
+    text-align: center; 
 }
-#contacto ul a:hover { /* Para enlaces de descarga */
+#contacto ul a:hover { 
     color: var(--color-accent-hover) !important;
 }
-#contacto #sandbox-request-btn.btn-secondary { /* Hereda .btn y .btn-secondary */
-    width: 100%;
-    /* Colores ya definidos en .btn-secondary */
+#contacto #sandbox-request-btn.btn-secondary { 
+    width: 100%; 
 }
-
 
 /* Footer */
 footer {
-    background-color: #1f2937; /* bg-gray-800 */
-    color: #d1d5db; /* text-gray-300 (Tailwind gray-400 es #9ca3af) */
-    padding-top: 3rem; /* py-12 */
+    background-color: #1f2937; 
+    color: #d1d5db; 
+    padding-top: 3rem; 
     padding-bottom: 3rem;
-    font-size: 0.875rem; /* text-sm */
+    font-size: 0.875rem; 
 }
 footer p {
-    color: #d1d5db; /* text-gray-300 */
-    margin-bottom: 0.25rem; /* mb-1 */
+    color: #d1d5db; 
+    margin-bottom: 0.25rem; 
 }
 
 /* Scrollbar (Opcional, Webkit browsers) */
