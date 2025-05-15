@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VOTE-5D: El Futuro de la Democracia Segura en Chile</title>
     
+    <script src="https://cdn.tailwindcss.com"></script> 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -17,11 +18,11 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body>
 
     <header>
-        <nav class="container py-3 flex justify-between items-center">
-            <a href="#hero" class="text-2xl font-bold">VOTE-5D</a>
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#hero" class="text-2xl">VOTE-5D</a>
             <div class="hidden md:flex space-x-4 items-center">
                 <a href="#hero">Inicio</a>
                 <a href="#seguridad">Seguridad</a>
@@ -39,26 +40,24 @@
                 </button>
             </div>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
-            {/* Los enlaces se generan dinámicamente por JS si es necesario o se copian del nav principal */}
-        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg"></div>
     </header>
 
-    <section id="hero" class="hero-bg py-20 min-h-screen flex items-center">
-        <div class="container text-center">
-            <h1>VOTE-5D: El Futuro de la Democracia Segura en Chile</h1>
+    <section id="hero" class="hero-bg min-h-screen flex items-center">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">VOTE-5D: El Futuro de la Democracia Segura en Chile</h1>
             <p class="text-lg md:text-2xl mb-10">Cabinas electrónicas portátiles con validación biométrica, trazabilidad blockchain y machine learning aplicado a seguridad electoral.</p>
             <button id="explore-prototype-btn" class="btn btn-primary text-lg px-8 py-4">
                 <i class="fas fa-cube mr-2"></i>Explorar Prototipo 3D
             </button>
-            <div id="3d-model-container-hero" class="mt-12">
+            <div id="3d-model-container-hero" class="mt-12 w-full max-w-3xl mx-auto h-96 rounded-lg flex items-center justify-center text-gray-400">
                 <p>[Modelo 3D Interactivo de Cabina VOTE-5D - Vista previa estática o animación simple aquí]</p>
             </div>
         </div>
     </section>
 
     <div id="modal-3d" class="modal">
-        <div class="p-6">
+        <div> {/* Contenedor interno del modal */}
             <button id="close-modal-btn" aria-label="Cerrar modal">&times;</button>
             <h3>Prototipo Cabina VOTE-5D</h3>
             <div id="interactive-3d-viewer">
@@ -78,7 +77,7 @@
     </div>
 
     <section id="seguridad">
-        <div class="container">
+        <div class="container mx-auto px-6">
             <h2 class="section-title">Validación y Seguridad de Voto</h2>
             <div class="grid md:grid-cols-2 gap-8 items-center">
                 <div>
@@ -98,7 +97,7 @@
                 <div class="space-y-6">
                     <div class="card">
                         <h4>Privacidad del Votante</h4>
-                        <p>Se utilizan técnicas de encriptación avanzada y disociación de datos para asegurar que el voto sea anónimo y no pueda ser rastreado hasta el individuo. Los datos biométricos se procesan localmente y se utilizan solo para la autenticación, sin almacenarse de forma centralizada vinculados al voto.</p>
+                        <p>Se utilizan técnicas de encriptación avanzada y disociación de datos para asegurar que el voto sea anónimo y no pueda ser rastreado hasta el individuo. Los datos biométricos se procesan localmente y se utilizan solo para la autenticación.</p>
                     </div>
                     <div class="card">
                         <h4>Detección de Anomalías con Machine Learning</h4>
@@ -114,39 +113,39 @@
     </section>
 
     <section id="ia" class="bg-gray-50">
-        <div class="container">
+        <div class="container mx-auto px-6">
             <h2 class="section-title">Aplicaciones de Inteligencia Artificial</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="card">
-                    <h3><i class="fas fa-user-shield mr-2"></i>Validación Facial Adaptativa</h3>
-                    <p>Modelos de IA que se adaptan a cambios en la apariencia (lentes, mascarillas parciales) y condiciones de iluminación para una verificación robusta.</p>
+                    <h3><i class="fas fa-user-shield"></i>Validación Facial Adaptativa</h3>
+                    <p>Modelos de IA que se adaptan a cambios en la apariencia y condiciones de iluminación.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-assistive-listening-systems mr-2"></i>Reconocimiento de Voz Seguro</h3>
-                    <p>Sistemas que analizan múltiples características de la voz para una autenticación precisa, incluso en ambientes con ruido moderado.</p>
+                    <h3><i class="fas fa-assistive-listening-systems"></i>Reconocimiento de Voz Seguro</h3>
+                    <p>Sistemas que analizan múltiples características de la voz para una autenticación precisa.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-file-signature mr-2"></i>Firma Digital Dinámica</h3>
-                    <p>Análisis de la biometría del trazo de la firma (presión, velocidad, inclinación) para una capa adicional de seguridad.</p>
+                    <h3><i class="fas fa-file-signature"></i>Firma Digital Dinámica</h3>
+                    <p>Análisis de la biometría del trazo de la firma para una capa adicional de seguridad.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-comments mr-2"></i>Análisis de Sentimiento Ciudadano</h3>
-                    <p>Procesamiento de lenguaje natural (NLP) para analizar feedback y opiniones sobre el sistema (post-implementación, datos agregados y anónimos).</p>
+                    <h3><i class="fas fa-comments"></i>Análisis de Sentimiento Ciudadano</h3>
+                    <p>Procesamiento de lenguaje natural (NLP) para analizar feedback y opiniones sobre el sistema.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-map-marked-alt mr-2"></i>Clustering Predictivo de Ubicaciones</h3>
-                    <p>IA para identificar las ubicaciones óptimas para las cabinas, maximizando la accesibilidad y minimizando la abstención en base a datos demográficos y geográficos.</p>
+                    <h3><i class="fas fa-map-marked-alt"></i>Clustering Predictivo de Ubicaciones</h3>
+                    <p>IA para identificar las ubicaciones óptimas para las cabinas, maximizando la accesibilidad.</p>
                 </div>
                 <div class="card">
-                    <h3><i class="fas fa-cogs mr-2"></i>Optimización de Procesos</h3>
-                    <p>Uso de IA para optimizar la logística electoral, la distribución de materiales y la asignación de personal.</p>
+                    <h3><i class="fas fa-cogs"></i>Optimización de Procesos</h3>
+                    <p>Uso de IA para optimizar la logística electoral y la asignación de recursos.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="impacto">
-        <div class="container">
+        <div class="container mx-auto px-6">
             <h2 class="section-title">Impacto Esperado</h2>
             <p class="text-center text-lg mb-10 max-w-3xl mx-auto">VOTE-5D busca transformar la participación ciudadana y la eficiencia de los procesos electorales en Chile.</p>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
@@ -171,14 +170,14 @@
                 <h3 class="text-2xl font-semibold mb-4 text-center">Casos de Uso Específicos</h3>
                 <p class="text-center text-lg mb-6">Facilitando el voto para:</p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Sectores Mineros</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Trabajadores Agrícolas</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Personal de Salud</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Estudiantes Universitarios</span>
-                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm">Comunidades Aisladas</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Sectores Mineros</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Trabajadores Agrícolas</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Personal de Salud</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Estudiantes Universitarios</span>
+                    <span class="bg-indigo-100 text-indigo-700 px-4 py-2 rounded-full text-sm font-medium">Comunidades Aisladas</span>
                 </div>
             </div>
-             <div class="mt-10 p-6 bg-gray-50 rounded-lg shadow">
+            <div class="mt-10 p-6 bg-gray-50 rounded-lg shadow">
                 <h4 class="text-xl font-semibold mb-3 text-center">Visualización de Impacto</h4>
                 <canvas id="impactChart" class="w-full"></canvas>
                 <p class="text-sm text-gray-500 mt-2 text-center">Este gráfico muestra las métricas de impacto proyectadas.</p>
@@ -187,7 +186,7 @@
     </section>
 
     <section id="presupuesto" class="bg-gray-50">
-        <div class="container">
+        <div class="container mx-auto px-6">
             <h2 class="section-title">Presupuesto Estimado por Fase</h2>
             <div class="overflow-x-auto bg-white rounded-lg shadow-lg p-6">
                 <table>
@@ -236,7 +235,7 @@
     </section>
 
     <section id="arquitectura">
-        <div class="container">
+        <div class="container mx-auto px-6">
             <h2 class="section-title">Arquitectura Técnica del Sistema</h2>
              <div class="mb-10 p-6 bg-gray-50 rounded-lg shadow">
                 <img src="https://placehold.co/1000x500/e2e8f0/6366f1?text=Diagrama+Técnico+Interactivo" alt="Diagrama de arquitectura técnica" class="rounded-lg shadow-md w-full mx-auto">
@@ -245,38 +244,38 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="card">
                     <h3>Edge Computing (Cabina)</h3>
-                    <p>Procesamiento local de datos biométricos, encriptación y comunicación segura. Minimiza latencia y dependencia de conectividad constante.</p>
+                    <p>Procesamiento local de datos biométricos, encriptación y comunicación segura.</p>
                 </div>
                 <div class="card">
                     <h3>Backend Gubernamental</h3>
-                    <p>Servidores seguros para la gestión de elecciones, padrones electorales (integración SERVEL), y consolidación de resultados anónimos.</p>
+                    <p>Servidores seguros para la gestión de elecciones, padrones e integración SERVEL.</p>
                 </div>
                 <div class="card">
                     <h3>Integración SERVEL</h3>
-                    <p>APIs seguras para la validación de identidad contra el padrón electoral oficial y el envío de resultados agregados.</p>
+                    <p>APIs seguras para la validación de identidad y envío de resultados agregados.</p>
                 </div>
                 <div class="card">
                     <h3>Plataforma Machine Learning</h3>
-                    <p>Modelos para detección de anomalías, optimización de ubicaciones y análisis adaptativos, operando sobre datos agregados y anonimizados.</p>
+                    <p>Modelos para detección de anomalías y optimización, sobre datos anonimizados.</p>
                 </div>
                 <div class="card">
                     <h3>Blockchain (Red Distribuida)</h3>
-                    <p>Red permisionada para el registro inmutable y auditable de los votos encriptados y anonimizados.</p>
+                    <p>Red permisionada para el registro inmutable y auditable de votos encriptados.</p>
                 </div>
                 <div class="card">
                     <h3>HSM (Hardware Security Modules)</h3>
-                    <p>Módulos de seguridad de hardware para la gestión y protección de claves criptográficas críticas.</p>
+                    <p>Módulos para la gestión y protección de claves criptográficas críticas.</p>
                 </div>
                  <div class="card">
                     <h3>Ciberseguridad Activa</h3>
-                    <p>Monitoreo constante, pruebas de penetración, firewalls de próxima generación y protocolos de respuesta a incidentes.</p>
+                    <p>Monitoreo constante, pruebas de penetración y protocolos de respuesta a incidentes.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="faq" class="bg-gray-50">
-        <div class="container">
+        <div class="container mx-auto px-6">
             <h2 class="section-title">Preguntas Frecuentes y Ética del Sistema</h2>
             <div class="max-w-3xl mx-auto space-y-4">
                 <div>
@@ -286,8 +285,8 @@
                             <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer">
-                        <p>El sistema VOTE-5D está diseñado con redundancia. Si un factor biométrico falla (ej. huella por un corte), el sistema permite usar combinaciones alternativas de los otros factores. En última instancia, y como medida de contingencia excepcional supervisada por personal electoral, se podría recurrir a una validación manual asistida con el documento de identidad, registrando el incidente para auditoría.</p>
+                    <div class="faq-answer hidden">
+                        <p>El sistema VOTE-5D está diseñado con redundancia. Si un factor biométrico falla, el sistema permite usar combinaciones alternativas. Como medida de contingencia excepcional, se podría recurrir a una validación manual asistida.</p>
                     </div>
                 </div>
                 <div>
@@ -297,8 +296,8 @@
                             <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer">
-                        <p>La protección de datos es primordial. Los datos biométricos se procesan en la cabina (edge computing) y se convierten en plantillas encriptadas (hashes). Estas plantillas se usan para la autenticación y luego se descartan o se almacenan de forma disociada y segura si es estrictamente necesario para auditorías específicas, cumpliendo con la Ley N° 19.628. El voto en sí es anónimo y se desvincula de la identidad del votante antes de registrarse en la blockchain.</p>
+                    <div class="faq-answer hidden">
+                        <p>Los datos biométricos se procesan localmente (edge computing) y se convierten en plantillas encriptadas (hashes) para autenticación, luego se descartan o almacenan disociados, cumpliendo Ley N° 19.628. El voto es anónimo.</p>
                     </div>
                 </div>
                 <div>
@@ -308,8 +307,8 @@
                             <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer">
-                        <p>El acceso a los datos está estrictamente controlado y segmentado. El SERVEL y los organismos electorales autorizados tendrán acceso a los resultados agregados y a la información de auditoría. Los datos crudos de votos son anónimos. Los datos de autenticación (plantillas biométricas) no se vinculan al voto y su acceso es restringido a procesos de auditoría de seguridad bajo estrictos protocolos.</p>
+                    <div class="faq-answer hidden">
+                        <p>El acceso es estrictamente controlado. SERVEL y organismos autorizados acceden a resultados agregados y datos de auditoría. Los votos son anónimos y las plantillas biométricas no se vinculan al voto.</p>
                     </div>
                 </div>
                 <div>
@@ -319,15 +318,8 @@
                             <i class="fas fa-chevron-down"></i>
                         </h3>
                     </button>
-                    <div class="faq-answer">
-                        <p>Se contemplan múltiples niveles de auditoría:</p>
-                        <ul class="list-disc list-inside ml-4 mt-2 space-y-1">
-                            <li>Auditoría del código fuente por entidades independientes.</li>
-                            <li>Auditorías de seguridad (pruebas de penetración, análisis de vulnerabilidades) antes y durante la implementación.</li>
-                            <li>Auditoría de la infraestructura y los procesos.</li>
-                            <li>Auditoría ciudadana: la naturaleza de blockchain permite que cualquier persona pueda verificar la integridad de la cadena de votos (anónimos).</li>
-                            <li>Auditorías post-electorales por organismos competentes.</li>
-                        </ul>
+                    <div class="faq-answer hidden">
+                        <p>Múltiples niveles: código fuente, seguridad (pentesting), infraestructura, procesos, y auditoría ciudadana (blockchain). Auditorías post-electorales por organismos competentes.</p>
                     </div>
                 </div>
             </div>
@@ -335,12 +327,12 @@
     </section>
 
     <section id="contacto">
-        <div class="container">
+        <div class="container mx-auto px-6">
             <h2 class="section-title">Contacto y Próximos Pasos</h2>
             <div class="grid md:grid-cols-2 gap-10 items-start">
                 <div>
                     <h3>Participe en el Piloto</h3>
-                    <p class="mb-6">Si representa a una autoridad gubernamental, entidad técnica u organismo internacional y está interesado en conocer más o ser parte del programa piloto de VOTE-5D, por favor complete el siguiente formulario.</p>
+                    <p class="mb-6">Si representa a una autoridad gubernamental, entidad técnica u organismo internacional y está interesado en VOTE-5D, complete el formulario.</p>
                     <form id="contact-form" class="space-y-5">
                         <div>
                             <label for="nombre">Nombre Completo</label>
@@ -366,14 +358,14 @@
                     <div>
                         <h3>Recursos Adicionales</h3>
                         <ul class="space-y-3">
-                            <li><a href="placeholder_propuesta_tecnica.pdf" download class="flex items-center"><i class="fas fa-file-alt mr-2"></i>Descargar Propuesta Técnica Detallada</a></li>
+                            <li><a href="placeholder_propuesta_tecnica.pdf" download class="flex items-center"><i class="fas fa-file-alt mr-2"></i>Descargar Propuesta Técnica</a></li>
                             <li><a href="placeholder_resumen_ejecutivo.pdf" download class="flex items-center"><i class="fas fa-file-invoice mr-2"></i>Descargar Resumen Ejecutivo</a></li>
                             <li><a href="placeholder_presentacion.pdf" download class="flex items-center"><i class="fas fa-file-powerpoint mr-2"></i>Descargar Presentación (PDF)</a></li>
                         </ul>
                     </div>
                     <div>
                         <h3>Acceso a Entorno de Pruebas</h3>
-                        <p class="mb-4">Solicite acceso a nuestro sandbox para una demostración técnica y para explorar las funcionalidades del sistema.</p>
+                        <p class="mb-4">Solicite acceso a nuestro sandbox para una demostración técnica.</p>
                         <button id="sandbox-request-btn" class="btn btn-secondary w-full">
                             <i class="fas fa-vial mr-2"></i>Solicitar Acceso al Sandbox
                         </button>
@@ -384,11 +376,9 @@
     </section>
 
     <footer>
-        <div class="container text-center">
+        <div class="container mx-auto px-6 text-center">
             <p>&copy; <span id="current-year"></span> Proyecto VOTE-5D. Todos los derechos reservados.</p>
             <p>Una iniciativa para fortalecer la democracia en Chile.</p>
-            <div class="mt-4">
-            </div>
         </div>
     </footer>
 
